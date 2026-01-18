@@ -168,6 +168,29 @@ Each repository is intentionally **composable**, allowing controls to be layered
 
 ---
 
+---
+
+## Planned / Not Yet Implemented (Roadmap)
+
+This section captures **intent** and **direction** only. Items listed here may change as requirements, time, and learning priorities evolve. Nothing in this section should be interpreted as a committed delivery schedule.
+
+### Supply Chain & Image Assurance (Planned)
+Goal: complement “hygiene and change visibility” with **verification and assurance** capabilities.
+
+- Container image vulnerability scanning (local and CI-friendly workflows)
+- SBOM generation and basic SBOM handling patterns
+- Signature verification patterns and provenance awareness (conceptual and practical)
+- Clear separation between **visibility**, **assessment**, and **enforcement**
+
+### Policy & Guardrails (Planned)
+- Admission / enforcement concepts (kept separate from foundations)
+- Minimal policy examples focused on clarity over completeness
+
+### Evidence & Reporting (Planned)
+- Structured outputs that can be archived as pipeline artifacts
+- Simple reporting formats that support operational review
+
+
 ## Status
 
 This index evolves as new labs are added. Existing repositories are considered stable unless explicitly marked otherwise.
