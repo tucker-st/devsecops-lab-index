@@ -1,254 +1,111 @@
 # DevSecOps Lab Index
 
-This repository serves as a **single authoritative index** for my DevSecOps and cloud security labs hosted on my professional GitHub account.
+This repository is a single, authoritative index for my DevSecOps and cloud security lab repositories on my professional GitHub.
 
-The purpose of this index is to:
-- clearly describe the **intent and scope** of each lab
-- show how individual repositories fit into a **cohesive DevSecOps learning and control model**
-- avoid duplication, over-claiming, or tool sprawl
+Principles:
+- Each repo demonstrates one capability clearly (no monoliths).
+- Each repo has explicit scope and explicit non-goals.
+- Outputs should be evidence-producing (artifacts, logs, decisions).
+- Labs are composable: hygiene -> assurance -> enforcement.
 
-Each repository demonstrates a **specific capability or control**, not a generic demo environment.
-
----
-
-## How to Read This Index
-
-The labs are organized by **capability layers**, not by tools.
-
-Each repository answers one question:
-> “What DevSecOps or security capability does this demonstrate?”
-
-This mirrors how mature environments are designed and assessed.
+Account: https://github.com/tucker-st
 
 ---
 
-## Capability Layers
+## Implemented Repositories
 
-### 1. Platform & Operational Foundations
-
-These repositories demonstrate **operational discipline** that underpins secure cloud, container, and CI/CD environments.
-
-#### RHCSA (RHEL 10) Practice Repository
-- Linux system administration under realistic constraints
-- Persistence, reboot validation, and service correctness
-- SELinux and firewall enforcement by default
-- Exam-style pressure and validation
-
+### 1) Docker Image Hygiene (Implemented)
 Purpose:
-> Establishes the operational baseline required for secure infrastructure and DevSecOps workflows.
+- Maintain change visibility for local Docker images by capturing before/after state and producing a diff report.
 
-Repository:  
-https://github.com/tucker-st/rhcsa-ex200
+What it demonstrates:
+- Operational hygiene and change tracking for existing images
+- Evidence artifacts suitable for review (before/after inventories, diffs, logs)
+
+Repository:
+- https://github.com/tucker-st/docker-image-hygiene
 
 ---
 
-### 2. Platform Hygiene & Change Visibility
-
-These repositories focus on **lifecycle awareness, drift detection, and change evidence**, not scanning or enforcement.
-
-#### Docker Image Hygiene
-- Captures Docker image state before and after updates
-- Pulls existing images with explicit change visibility
-- Produces reproducible diff artifacts and logs
-- Supports operational hygiene and evidence generation
-
+### 2) Docker Image Assurance (Implemented, tagged v0.1.0)
 Purpose:
-> Demonstrates container image lifecycle hygiene and change visibility as a reusable DevSecOps control.
+- Produce reviewable container image assurance artifacts using containerized tooling.
 
-Explicit non-goals:
-- Vulnerability scanning
-- SBOM generation
-- Policy enforcement
+What it demonstrates:
+- SBOM generation (machine-readable)
+- Vulnerability assessment output (machine-readable)
+- A human-readable summary for reviewers
 
-Repository:  
-https://github.com/tucker-st/docker-image-hygiene
+Primary outputs:
+- out/sbom.json
+- out/vuln.json
+- out/summary.md
+
+Repository:
+- https://github.com/tucker-st/docker-image-assurance
+
+Release:
+- v0.1.0
 
 ---
 
-### 3. Cloud Security Foundations
-
-These repositories establish **security-first cloud baselines** with explicit scope and guardrails.
-
-#### AWS Cloud Security Foundations
-- IAM fundamentals and least-privilege patterns
-- Logging and visibility
-- Network security basics
-- Shared responsibility model
-
+### 3) Policy Enforcement Foundations (Implemented, tagged v0.1.0)
 Purpose:
-> Provides a disciplined entry point into AWS security without console-driven shortcuts.
+- Demonstrate policy evaluation and enforcement gating using OPA, producing explicit allow/deny decisions and artifacts.
 
-Repository:  
-https://github.com/tucker-st/aws-cloud-security-foundations
+What it demonstrates:
+- Policy-as-code evaluation
+- Deterministic artifacts for review
+- Gate semantics (exit 0 allow / non-zero deny)
 
----
+Primary outputs:
+- out/decision.json
+- out/summary.md
 
-### 4. Secure Kubernetes & Platform Foundations
+Repository:
+- https://github.com/tucker-st/policy-enforcement-foundations
 
-These repositories focus on **correct, auditable platform setup**, not feature completeness.
-
-#### AWS EKS Secure Foundations
-- Single-region, security-first EKS deployment
-- IRSA with OIDC
-- Secure add-ons via Helm
-- Observability and operational readiness
-
-Purpose:
-> Demonstrates how to stand up a Kubernetes control plane with security and auditability as first-class concerns.
-
-Repository:  
-https://github.com/tucker-st/aws-eks-secure-foundations
+Release:
+- v0.1.0
 
 ---
 
-### 5. Infrastructure as Code Controls
+## How These Repos Fit Together
 
-These repositories emphasize **guardrails, structure, and change awareness** in IaC.
+A minimal, composable control chain:
 
-#### Secure IaC Foundations
-- Terraform structure and state safety
-- Change impact awareness
-- Secure defaults
-- Automation with intent
+1) Hygiene:
+- Tracks what changed locally (before/after, diffs)
+- Does not claim vulnerability assessment or enforcement
 
-Purpose:
-> Treats Infrastructure as Code as an operational control surface, not just a deployment mechanism.
+2) Assurance:
+- Produces evidence (SBOM + vulnerability results)
+- Does not enforce or block by itself
 
-Repository:  
-https://github.com/tucker-st/secure-iac-foundations
-
----
-
-### 6. RMF & Compliance Operations
-
-These repositories translate governance into **practical, day-to-day workflows**.
-
-#### RMF Operational Playbooks
-- Continuous monitoring practices
-- POA&M lifecycle management
-- Audit and inspection readiness
-- Operational compliance guidance
-
-Purpose:
-> Bridges formal RMF requirements with real operational execution.
-
-Repository:  
-https://github.com/tucker-st/rmf-operational-playbooks
-
----
-
-### 7. Supply Chain & Image Assurance
-
-These repositories focus on **assessment and assurance artifacts** for container images.  
-They are intentionally separate from hygiene, change visibility, and policy enforcement.
-
-#### Docker Image Assurance
-- Generates Software Bill of Materials (SBOM)
-- Performs container image vulnerability assessment
-- Produces structured, reviewable artifacts suitable for CI pipelines
-- Uses containerized tooling to avoid local dependency sprawl
-
-Purpose:
-> Demonstrates container image assessment and assurance workflows without enforcing policy or blocking deployments.
-
-Explicit non-goals:
-- Image pull hygiene or change tracking (handled separately)
-- Admission control or policy enforcement
-- Signature enforcement or provenance guarantees
-
-Repository:  
-https://github.com/tucker-st/docker-image-assurance
-
----
-
-### 8. Enforcement & Policy (Planned)
-
-This capability layer represents **future work** focused on **policy enforcement and decision points** in DevSecOps pipelines and platforms.
-
-Items in this section are **not yet implemented**.  
-They are listed to show **architectural intent**, not delivery commitments.
-
-The goal is to demonstrate how **enforcement builds on hygiene and assurance**, rather than replacing them.
-
-#### Policy & Enforcement Foundations (Planned)
-Conceptual and practical exploration of enforcement mechanisms, intentionally kept separate from foundations and assessment.
-
-Potential focus areas:
-- Policy-as-code concepts applied after evidence is produced
-- Admission control patterns (e.g., allow / deny decisions)
-- CI/CD gating based on explicit criteria
-- Clear distinction between **visibility**, **assessment**, and **enforcement**
+3) Enforcement:
+- Consumes normalized evidence and makes an explicit decision (allow/deny)
+- Produces reviewable decision artifacts
 
 Design intent:
-> Enforcement should be applied deliberately, with full awareness of upstream hygiene and assurance signals.
-
-Explicit non-goals (at this stage):
-- Full enterprise policy engines
-- Turnkey “one-click” enforcement frameworks
-- Broad compliance claims
-
-This layer is planned to **consume artifacts** produced by:
-- Platform hygiene controls
-- Image assurance workflows
-- Infrastructure and identity foundations
-
-No repository currently exists for this layer.
-
-
-## Design Principles Across All Labs
-
-- Explicit scope and stated non-goals
-- Minimalism over feature sprawl
-- Reproducibility and validation
-- Evidence-producing controls
-- Separation of hygiene, assessment, and enforcement
-- Operational realism over tutorial convenience
+- Evidence should exist before enforcement.
+- Enforcement should be deliberate and explainable.
 
 ---
 
-## What This Index Is Not
+## Planned (Future)
 
-- Not a monolithic “all-in-one” lab
-- Not a collection of unrelated demos
-- Not a vulnerability scanning showcase
-- Not a certification cram site
+### Enforcement & Policy Expansion (Planned)
+Intent:
+- Add optional examples that demonstrate enforcement patterns (admission concepts, CI gating patterns) without becoming an enterprise policy engine.
 
-Each repository is intentionally **composable**, allowing controls to be layered without coupling.
-
----
-
-## Intended Audience
-
-- Security engineers transitioning to cloud and DevSecOps
-- Platform and infrastructure engineers operating in regulated environments
-- ISSOs and security professionals modernizing legacy practices
-- Reviewers seeking evidence of operational judgment, not just tooling familiarity
-
----
-
-## Planned / Not Yet Implemented (Roadmap)
-
-This section captures **intent** and **direction** only. Items listed here may change as requirements, time, and learning priorities evolve. Nothing in this section should be interpreted as a committed delivery schedule.
-
-### Policy & Guardrails (Planned)
-- Admission / enforcement concepts (kept separate from foundations)
-- Minimal policy examples focused on clarity over completeness
-
-### Evidence & Reporting (Planned)
-- Structured outputs that can be archived as pipeline artifacts
-- Simple reporting formats that support operational review
+Non-goals:
+- No “one-click enterprise framework”
+- No broad compliance claims
+- No mixing enforcement logic into hygiene or assurance repos
 
 ---
 
 ## Status
 
-This index evolves as new labs are added. Existing repositories are considered stable unless explicitly marked otherwise.
-
----
-
-## Contact & Collaboration
-
-Collaboration and discussion are welcome where appropriate.  
-Each repository contains its own scope and contribution guidelines.
-
-This index exists to provide **clarity, alignment, and architectural intent** across the DevSecOps lab ecosystem.
+This index evolves as labs are added or refined.
+Repositories are considered stable unless explicitly marked otherwise.
