@@ -85,9 +85,16 @@ Scope clarification:
 - It does not make allow/deny decisions
 
 
-2) Assurance:
-- Produces evidence (SBOM + vulnerability results)
-- Does not enforce or block by itself
+2) Container Image Assurance:
+- Produces reviewable evidence about container image contents and known vulnerabilities
+- Generates machine-readable artifacts suitable for downstream processing
+- Provides a human-readable summary to support review
+
+Scope clarification:
+- Container image assurance evaluates image contents against known data sources
+- It does not enforce policy or make allow/deny decisions
+- It does not modify images or environments
+
 
 3) Enforcement:
 - Consumes normalized evidence and makes an explicit decision (allow/deny)
