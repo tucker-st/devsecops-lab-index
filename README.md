@@ -37,7 +37,7 @@ These repositories demonstrate **operational discipline** that underpins secure 
 Purpose:
 > Establishes the operational baseline required for secure infrastructure and DevSecOps workflows.
 
-Repository:
+Repository:  
 https://github.com/tucker-st/rhcsa-ex200
 
 ---
@@ -60,7 +60,7 @@ Explicit non-goals:
 - SBOM generation
 - Policy enforcement
 
-Repository:
+Repository:  
 https://github.com/tucker-st/docker-image-hygiene
 
 ---
@@ -78,7 +78,7 @@ These repositories establish **security-first cloud baselines** with explicit sc
 Purpose:
 > Provides a disciplined entry point into AWS security without console-driven shortcuts.
 
-Repository:
+Repository:  
 https://github.com/tucker-st/aws-cloud-security-foundations
 
 ---
@@ -96,7 +96,7 @@ These repositories focus on **correct, auditable platform setup**, not feature c
 Purpose:
 > Demonstrates how to stand up a Kubernetes control plane with security and auditability as first-class concerns.
 
-Repository:
+Repository:  
 https://github.com/tucker-st/aws-eks-secure-foundations
 
 ---
@@ -114,7 +114,7 @@ These repositories emphasize **guardrails, structure, and change awareness** in 
 Purpose:
 > Treats Infrastructure as Code as an operational control surface, not just a deployment mechanism.
 
-Repository:
+Repository:  
 https://github.com/tucker-st/secure-iac-foundations
 
 ---
@@ -132,10 +132,68 @@ These repositories translate governance into **practical, day-to-day workflows**
 Purpose:
 > Bridges formal RMF requirements with real operational execution.
 
-Repository:
+Repository:  
 https://github.com/tucker-st/rmf-operational-playbooks
 
 ---
+
+### 7. Supply Chain & Image Assurance
+
+These repositories focus on **assessment and assurance artifacts** for container images.  
+They are intentionally separate from hygiene, change visibility, and policy enforcement.
+
+#### Docker Image Assurance
+- Generates Software Bill of Materials (SBOM)
+- Performs container image vulnerability assessment
+- Produces structured, reviewable artifacts suitable for CI pipelines
+- Uses containerized tooling to avoid local dependency sprawl
+
+Purpose:
+> Demonstrates container image assessment and assurance workflows without enforcing policy or blocking deployments.
+
+Explicit non-goals:
+- Image pull hygiene or change tracking (handled separately)
+- Admission control or policy enforcement
+- Signature enforcement or provenance guarantees
+
+Repository:  
+https://github.com/tucker-st/docker-image-assurance
+
+---
+
+### 8. Enforcement & Policy (Planned)
+
+This capability layer represents **future work** focused on **policy enforcement and decision points** in DevSecOps pipelines and platforms.
+
+Items in this section are **not yet implemented**.  
+They are listed to show **architectural intent**, not delivery commitments.
+
+The goal is to demonstrate how **enforcement builds on hygiene and assurance**, rather than replacing them.
+
+#### Policy & Enforcement Foundations (Planned)
+Conceptual and practical exploration of enforcement mechanisms, intentionally kept separate from foundations and assessment.
+
+Potential focus areas:
+- Policy-as-code concepts applied after evidence is produced
+- Admission control patterns (e.g., allow / deny decisions)
+- CI/CD gating based on explicit criteria
+- Clear distinction between **visibility**, **assessment**, and **enforcement**
+
+Design intent:
+> Enforcement should be applied deliberately, with full awareness of upstream hygiene and assurance signals.
+
+Explicit non-goals (at this stage):
+- Full enterprise policy engines
+- Turnkey “one-click” enforcement frameworks
+- Broad compliance claims
+
+This layer is planned to **consume artifacts** produced by:
+- Platform hygiene controls
+- Image assurance workflows
+- Infrastructure and identity foundations
+
+No repository currently exists for this layer.
+
 
 ## Design Principles Across All Labs
 
@@ -143,7 +201,7 @@ https://github.com/tucker-st/rmf-operational-playbooks
 - Minimalism over feature sprawl
 - Reproducibility and validation
 - Evidence-producing controls
-- Separation of hygiene, enforcement, and scanning
+- Separation of hygiene, assessment, and enforcement
 - Operational realism over tutorial convenience
 
 ---
@@ -168,19 +226,9 @@ Each repository is intentionally **composable**, allowing controls to be layered
 
 ---
 
----
-
 ## Planned / Not Yet Implemented (Roadmap)
 
 This section captures **intent** and **direction** only. Items listed here may change as requirements, time, and learning priorities evolve. Nothing in this section should be interpreted as a committed delivery schedule.
-
-### Supply Chain & Image Assurance (Planned)
-Goal: complement “hygiene and change visibility” with **verification and assurance** capabilities.
-
-- Container image vulnerability scanning (local and CI-friendly workflows)
-- SBOM generation and basic SBOM handling patterns
-- Signature verification patterns and provenance awareness (conceptual and practical)
-- Clear separation between **visibility**, **assessment**, and **enforcement**
 
 ### Policy & Guardrails (Planned)
 - Admission / enforcement concepts (kept separate from foundations)
@@ -190,6 +238,7 @@ Goal: complement “hygiene and change visibility” with **verification and ass
 - Structured outputs that can be archived as pipeline artifacts
 - Simple reporting formats that support operational review
 
+---
 
 ## Status
 
