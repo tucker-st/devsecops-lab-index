@@ -96,13 +96,16 @@ Scope clarification:
 - It does not modify images or environments
 
 
-3) Enforcement:
-- Consumes normalized evidence and makes an explicit decision (allow/deny)
-- Produces reviewable decision artifacts
+3) Container Image Policy Enforcement:
+- Evaluates evidence produced by upstream processes against explicit policy rules
+- Produces a deterministic allow or deny decision
+- Generates machine-readable and human-readable decision artifacts
 
-Design intent:
-- Evidence should exist before enforcement.
-- Enforcement should be deliberate and explainable.
+Scope clarification:
+- Container image policy enforcement consumes evidence; it does not generate it
+- Policy decisions are explicit and explainable
+- Enforcement logic is intentionally decoupled from hygiene and assurance tooling
+
 
 ---
 
