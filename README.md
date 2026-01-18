@@ -1,40 +1,56 @@
 # DevSecOps Lab Index
 
-This repository is a single, authoritative index for my DevSecOps and cloud security lab repositories on my professional GitHub.
+This repository serves as a single, authoritative index for my DevSecOps and container security lab repositories on my professional GitHub account.
 
-Principles:
-- Each repo demonstrates one capability clearly (no monoliths).
-- Each repo has explicit scope and explicit non-goals.
-- Outputs should be evidence-producing (artifacts, logs, decisions).
-- Labs are composable: hygiene -> assurance -> enforcement.
+The goal of this index is clarity, not completeness. Each repository demonstrates one capability with explicit scope and explicit non-goals.
 
-Account: https://github.com/tucker-st
+Design principles:
+- One capability per repository
+- Evidence-first workflows
+- Clear separation between visibility, assessment, and enforcement
+- Artifacts over screenshots
+- Composable, not monolithic
+
+Account:
+https://github.com/tucker-st
 
 ---
 
 ## Implemented Repositories
 
-### 1) Docker Image Hygiene (Implemented)
+### Docker Image Hygiene
+Status: Implemented
+
 Purpose:
-- Maintain change visibility for local Docker images by capturing before/after state and producing a diff report.
+- Establish baseline visibility into local container image state
+- Make changes observable through before-and-after comparison
 
 What it demonstrates:
-- Operational hygiene and change tracking for existing images
-- Evidence artifacts suitable for review (before/after inventories, diffs, logs)
+- Inventory capture before change
+- Inventory capture after change
+- Diffable artifacts showing what changed
+
+Primary outputs:
+- Before inventory
+- After inventory
+- Diff report
+- Execution logs
 
 Repository:
-- https://github.com/tucker-st/docker-image-hygiene
+https://github.com/tucker-st/docker-image-hygiene
 
 ---
 
-### 2) Docker Image Assurance (Implemented, tagged v0.1.0)
+### Docker Image Assurance
+Status: Implemented (v0.1.0)
+
 Purpose:
-- Produce reviewable container image assurance artifacts using containerized tooling.
+- Produce reviewable evidence about container image contents and known vulnerabilities
 
 What it demonstrates:
-- SBOM generation (machine-readable)
-- Vulnerability assessment output (machine-readable)
-- A human-readable summary for reviewers
+- SBOM generation
+- Vulnerability assessment using known data sources
+- Human-readable assurance summary
 
 Primary outputs:
 - out/sbom.json
@@ -42,39 +58,41 @@ Primary outputs:
 - out/summary.md
 
 Repository:
-- https://github.com/tucker-st/docker-image-assurance
+https://github.com/tucker-st/docker-image-assurance
 
 Release:
-- v0.1.0
+v0.1.0
 
 ---
 
-### 3) Policy Enforcement Foundations (Implemented, tagged v0.1.0)
+### Policy Enforcement Foundations
+Status: Implemented (v0.1.0)
+
 Purpose:
-- Demonstrate policy evaluation and enforcement gating using OPA, producing explicit allow/deny decisions and artifacts.
+- Demonstrate policy evaluation and enforcement gating using explicit rules
 
 What it demonstrates:
 - Policy-as-code evaluation
-- Deterministic artifacts for review
-- Gate semantics (exit 0 allow / non-zero deny)
+- Deterministic allow or deny decisions
+- Explainable enforcement outcomes
 
 Primary outputs:
 - out/decision.json
 - out/summary.md
 
 Repository:
-- https://github.com/tucker-st/policy-enforcement-foundations
+https://github.com/tucker-st/policy-enforcement-foundations
 
 Release:
-- v0.1.0
+v0.1.0
 
 ---
 
-## How These Repos Fit Together
+## How These Repositories Fit Together
 
-A minimal, composable control chain:
+The repositories are designed to form a simple, composable control chain.
 
-1) Container Image Hygiene:
+1) Container Image Hygiene
 - Establishes baseline visibility into local container image state
 - Captures before-and-after inventories to make changes observable
 - Produces diffable artifacts that support review and troubleshooting
@@ -82,21 +100,23 @@ A minimal, composable control chain:
 Scope clarification:
 - Container image hygiene focuses on awareness and traceability of change
 - It does not assess risk, severity, or compliance
-- It does not make allow/deny decisions
+- It does not make allow or deny decisions
 
+---
 
-2) Container Image Assurance:
+2) Container Image Assurance
 - Produces reviewable evidence about container image contents and known vulnerabilities
 - Generates machine-readable artifacts suitable for downstream processing
 - Provides a human-readable summary to support review
 
 Scope clarification:
 - Container image assurance evaluates image contents against known data sources
-- It does not enforce policy or make allow/deny decisions
+- It does not enforce policy or make allow or deny decisions
 - It does not modify images or environments
 
+---
 
-3) Container Image Policy Enforcement:
+3) Container Image Policy Enforcement
 - Evaluates evidence produced by upstream processes against explicit policy rules
 - Produces a deterministic allow or deny decision
 - Generates machine-readable and human-readable decision artifacts
@@ -106,19 +126,31 @@ Scope clarification:
 - Policy decisions are explicit and explainable
 - Enforcement logic is intentionally decoupled from hygiene and assurance tooling
 
+---
+
+## Control Chain Summary
+
+Container Image Hygiene provides visibility into change.
+
+Container Image Assurance provides evidence about image contents and known issues.
+
+Container Image Policy Enforcement evaluates evidence and produces an explicit decision.
+
+Each layer is intentionally independent. Evidence must exist before enforcement. Enforcement is explicit and explainable.
 
 ---
 
 ## Planned (Future)
 
-### Enforcement & Policy Expansion (Planned)
+Enforcement and Policy Expansion
+
 Intent:
-- Add optional examples that demonstrate enforcement patterns (admission concepts, CI gating patterns) without becoming an enterprise policy engine.
+- Add optional examples that demonstrate enforcement patterns such as CI gating or admission-style checks
 
 Non-goals:
-- No “one-click enterprise framework”
+- No enterprise policy framework
 - No broad compliance claims
-- No mixing enforcement logic into hygiene or assurance repos
+- No mixing enforcement logic into hygiene or assurance repositories
 
 ---
 
