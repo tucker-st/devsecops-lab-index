@@ -87,6 +87,14 @@ Release:
 v0.1.0
 
 ---
+## End-to-End Workflow
+
+For a single, step-by-step guide demonstrating how the repositories in this index
+work together, see:
+
+CONTAINER_IMAGE_CONTROL_CHAIN_GUIDE.md
+
+---
 
 ## How These Repositories Fit Together
 
