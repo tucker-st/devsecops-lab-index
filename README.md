@@ -74,9 +74,16 @@ Release:
 
 A minimal, composable control chain:
 
-1) Hygiene:
-- Tracks what changed locally (before/after, diffs)
-- Does not claim vulnerability assessment or enforcement
+1) Container Image Hygiene:
+- Establishes baseline visibility into local container image state
+- Captures before-and-after inventories to make changes observable
+- Produces diffable artifacts that support review and troubleshooting
+
+Scope clarification:
+- Container image hygiene focuses on awareness and traceability of change
+- It does not assess risk, severity, or compliance
+- It does not make allow/deny decisions
+
 
 2) Assurance:
 - Produces evidence (SBOM + vulnerability results)
